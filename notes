@@ -1,0 +1,341 @@
+Towns:
+TSGARN-T.MSG
+   x=Room index.  Real number = x-100.
+   T3NOx    {N,NE,E,SE,S,SW,W,NW,U,D}
+   T4SHx    Room Name
+   T4LOx    Room Description
+   
+   T1NOx    {mob vnum,un adjusted room index}
+   T6NOx    {x,y,z}
+            x=room flag (safe)
+              0=equipment shop
+              1=weapon shop
+              2=armor shop
+              3=magic shop
+              4=tavern
+              5=temple
+              6=guild hall
+              7=vault
+              8=arena
+            y=room number(number-100)
+            z=number
+
+   Door Data in TSGARNDD.MSG
+      Private Room and Arena #1                
+-----------------------------------------
+TSGARNDT = dt is mostly descriptions to match TSGARNDD. All of the room descriptions are held here. You'll also find the tavern rumors and descriptions for actions (like "pull lever" and the like). 
+TSGARNDD = dd contains all of the numeric world data. By numeric I mean the ID's of all of the rooms, lairs, darkness, Terrain, triggers, and barriers. 
+   DD1-1    {start_vnum end_vnum darkness(0 = torch, glowstone can light, 1 = permanent darkness)}
+   DD2-1    {start_vnum end_vnum terrain}
+   LAIR1    {room# mob# number item_drop 0}
+   EXIT     {N,NE,E,SE,S,SW,W,NW,U,D,ROOM_DESC_#}
+   DOOR     {key_vnum, from_room#, to_room#, message#, consumes(0=no,1=yes,3=huh), ?, ?}
+
+tsgarn-t = -t has all of the town data in it. Rooms, shopkeepers, and descriptions. You'll also find the user to user actions here, like sob, hug, kick, all of those things.
+tsgarn-m = This is all of the in-game messages. Plain text, ansi color compatible.
+tsgarn-d = This file contains item's, spells, monsters, barrier descriptions, trap descriptions, treasure descriptions, and teleportation descriptions. 
+tsgarn-c = This is the game's config. Things like what key the Op carries, how many credit's are consumed while in the game, things like that. You dont need to modifiy this directly, you can use the BBS's CNF utility for this.
+
+se
+You're in a cave.
+There is a giant bat here.
+There is nothing on the floor.
+&rA spiked trap catches your foot and pain shoots up your leg!
+
+w
+You're in a cave.
+There is nobody here.
+There is nothing on the floor.
+&BYou just fell through a trap door in the floor!
+-----------------------------------------------------------------------
+{room#, trigger#, value, ?, ?, ?, ?, ?}
+TRIGTOT {268}
+TRIG255  {1    0 0    0  0    0    0 0}
+
+v0 = room number
+v1 = 1 (Treasure)
+v2 = Treasure Number
+v3 = Rune Number
+
+TRIG6    {182  1 4    1  0    0    1 1}      White Rune
+TRIG11   {500  1 5    0  0    0    1 1}      Treasure
+TRIG41   {991  1 4    0  0    0    1 1}      Treasure
+TRIG63   {1457 1 0    2  0    0    1 1}      Yellow Rune
+TRIG80   {2101 1 0    4  0    0    1 1}      Blue Rune
+ 
+ v0 = room number 
+ v1 = 1=Treasure, 2=Trap
+ v2 = trap number cross referenced in XDES1 in TSGARN-D.MSG
+ v3 = amount of poison damage
+ 
+          0    1 2    3  4    5    6 7
+TRIG1    {20   2 0    0  0    0    0 1}         
+TRIG4    {105  2 1    2  0    0    0 1}         
+TRIG5    {181  2 4    0  0    0    0 1}         
+TRIG8    {486  2 3    2  0    0    0 1}
+TRIG10   {498  2 5    0  0    0    0 1}
+TRIG17   {611  2 3    0  0    0    0 1}
+TRIG18   {612  2 3    4  0    0    0 1}
+TRIG21   {627  2 4    0  0    0    0 1}
+TRIG27   {652  2 5    0  0    0    0 1}
+TRIG28   {659  2 5    0  0    0    0 1}
+TRIG29   {682  2 4    0  0    0    0 1}
+TRIG31   {687  2 3    4  0    0    0 1}
+TRIG36   {819  2 5    0  0    0    0 1}
+TRIG37   {825  2 5    0  0    0    0 1}
+TRIG40   {990  2 1    2  0    0    0 1}
+TRIG45   {1218 2 4    0  0    0    0 1}
+TRIG50   {1281 2 4    0  0    0    0 1}
+TRIG52   {1297 2 6    0  0    0    0 1}
+TRIG54   {1327 2 6    0  0    0    0 1}
+TRIG56   {1366 2 6    0  0    0    0 1}
+TRIG58   {1390 2 6    0  0    0    0 1}
+TRIG59   {1404 2 6    0  0    0    0 1}
+TRIG60   {1439 2 6    0  0    0    0 1}
+TRIG96   {3099 2 7    0  0    0    0 1}
+TRIG97   {3121 2 8    10 0    0    0 1}
+TRIG128  {3206 2 8    5  0    0    0 1}
+TRIG129  {3208 2 8    5  0    0    0 1}
+TRIG130  {3212 2 8    5  0    0    0 1}
+TRIG131  {3214 2 8    5  0    0    0 1}
+TRIG132  {3222 2 8    5  0    0    0 1}
+TRIG133  {3230 2 8    5  0    0    0 1}
+TRIG134  {3232 2 8    5  0    0    0 1}
+TRIG135  {3236 2 8    5  0    0    0 1}
+TRIG136  {3238 2 8    5  0    0    0 1}
+TRIG137  {3247 2 8    5  0    0    0 1}
+TRIG138  {3255 2 8    5  0    0    0 1}
+TRIG139  {3257 2 8    5  0    0    0 1}
+TRIG140  {3261 2 8    5  0    0    0 1}
+TRIG141  {3263 2 8    5  0    0    0 1}
+TRIG142  {3276 2 8    5  0    0    0 1}
+TRIG143  {3278 2 8    5  0    0    0 1}
+TRIG144  {3282 2 8    5  0    0    0 1}
+TRIG145  {3284 2 8    5  0    0    0 1}
+TRIG175  {3294 2 8    5  0    0    0 1}
+TRIG176  {3296 2 8    5  0    0    0 1}
+TRIG177  {3304 2 8    5  0    0    0 1}
+TRIG178  {3310 2 8    5  0    0    0 1}
+TRIG179  {3306 2 8    5  0    0    0 1}
+TRIG180  {3312 2 8    5  0    0    0 1}
+TRIG181  {3390 2 8    5  0    0    0 1}
+TRIG182  {3388 2 8    5  0    0    0 1}
+TRIG183  {3330 2 8    5  0    0    0 1}
+TRIG184  {3332 2 8    5  0    0    0 1}
+TRIG185  {3338 2 8    5  0    0    0 1}
+TRIG186  {3380 2 8    5  0    0    0 1}
+TRIG187  {3360 2 8    5  0    0    0 1}
+TRIG188  {3362 2 8    5  0    0    0 1}
+TRIG189  {3354 2 8    5  0    0    0 1}
+TRIG190  {3413 2 8    5  0    0    0 1}
+TRIG191  {3411 2 8    5  0    0    0 1}
+TRIG192  {3322 2 8    5  0    0    0 1}
+TRIG193  {3396 2 8    5  0    0    0 1}
+TRIG194  {3405 2 8    5  0    0    0 1}
+TRIG195  {3403 2 8    5  0    0    0 1}
+TRIG196  {3374 2 8    5  0    0    0 1}
+TRIG197  {3368 2 8    5  0    0    0 1}
+TRIG198  {3348 2 8    5  0    0    0 1}
+TRIG199  {3350 2 8    5  0    0    0 1}
+TRIG200  {3344 2 8    5  0    0    0 1}
+TRIG201  {3316 2 8    5  0    0    0 1}
+TRIG202  {3370 2 8    5  0    0    0 1}
+TRIG217  {3519 2 9    0  0    0    0 1}
+TRIG218  {3523 2 9    0  0    0    0 1}
+TRIG219  {3529 2 9    0  0    0    0 1}
+TRIG220  {3533 2 9    0  0    0    0 1}
+TRIG221  {3537 2 9    0  0    0    0 1}
+TRIG222  {3541 2 9    0  0    0    0 1}
+TRIG223  {3545 2 9    0  0    0    0 1}
+TRIG224  {3549 2 9    0  0    0    0 1}
+TRIG225  {3553 2 7    0  0    0    0 1}
+TRIG226  {3557 2 7    0  0    0    0 1}
+TRIG227  {3561 2 7    0  0    0    0 1}
+TRIG228  {3565 2 7    0  0    0    0 1}
+TRIG229  {3569 2 7    0  0    0    0 1}
+TRIG230  {3573 2 7    0  0    0    0 1}
+TRIG231  {3577 2 7    0  0    0    0 1}
+TRIG232  {3581 2 7    0  0    0    0 1}
+TRIG233  {3585 2 7    0  0    0    0 1}
+TRIG234  {3589 2 7    0  0    0    0 1}
+TRIG235  {3593 2 7    0  0    0    0 1}
+TRIG236  {3597 2 7    0  0    0    0 1}
+TRIG237  {3654 2 7    0  0    0    0 1}
+TRIG238  {3602 2 7    0  0    0    0 1}
+TRIG239  {3606 2 7    0  0    0    0 1}
+TRIG240  {3610 2 7    0  0    0    0 1}
+TRIG241  {3614 2 7    0  0    0    0 1}
+TRIG242  {3618 2 7    0  0    0    0 1}
+TRIG243  {3622 2 7    0  0    0    0 1}
+TRIG244  {3626 2 7    0  0    0    0 1}
+TRIG245  {3630 2 7    0  0    0    0 1}
+TRIG246  {3634 2 7    0  0    0    0 1}
+TRIG247  {3638 2 7    0  0    0    0 1}
+TRIG248  {3642 2 7    0  0    0    0 1}
+TRIG249  {3646 2 7    0  0    0    0 1}
+TRIG250  {3650 2 7    0  0    0    0 1}
+TRIG252  {3726 2 1    5  0    0    0 1}
+TRIG257  {3900 2 9    0  0    0    0 1}
+TRIG258  {3901 2 9    0  0    0    0 1}
+TRIG259  {3908 2 9    0  0    0    0 1}
+TRIG260  {3909 2 9    0  0    0    0 1}
+
+v0 = room number
+v1 = 3 (Teleport)
+v2 = to room number
+v3 = teleport message
+
+          0    1 2    3  4    5    6 7
+TRIG2    {74   3 179  0  0    0    0 1}       
+TRIG3    {75   3 180  0  0    0    0 1}       
+TRIG7    {484  3 485  1  0    0    0 1}
+TRIG9    {497  3 498  1  0    0    0 1}
+TRIG12   {525  3 564  1  0    0    0 1}
+TRIG13   {526  3 553  1  0    0    0 1}
+TRIG14   {563  3 515  1  0    0    0 1}
+TRIG15   {574  3 575  1  0    0    0 1}
+TRIG16   {590  3 515  1  0    0    0 1}
+TRIG19   {619  3 618  1  0    0    0 1}
+TRIG20   {622  3 656  1  0    0    0 1}
+TRIG22   {634  3 678  1  0    0    0 1}
+TRIG23   {636  3 623  1  0    0    0 1}
+TRIG24   {636  3 623  1  0    0    0 1}
+TRIG25   {641  3 662  1  0    0    0 1}
+TRIG26   {642  3 671  1  0    0    0 1}
+TRIG30   {683  3 633  1  0    0    0 1}
+TRIG32   {709  3 753  1  0    0    0 1}
+TRIG33   {731  3 723  1  0    0    0 1}
+TRIG34   {787  3 737  1  0    0    0 1}
+TRIG35   {800  3 762  1  0    0    0 1}
+TRIG38   {966  3 970  0  0    0    0 1}
+TRIG39   {967  3 969  0  0    0    0 1}
+TRIG42   {1080 3 1529 2  0    0    0 1}
+TRIG73   {1681 3 1781 3  0    0    0 1}
+TRIG74   {1733 3 1833 3  0    0    0 1}
+TRIG75   {1751 3 1851 3  0    0    0 1}
+TRIG76   {1880 3 1680 3  0    0    0 1}
+TRIG77   {1900 3 1700 3  0    0    0 1}
+TRIG78   {1911 3 1711 3  0    0    0 1}
+TRIG79   {2100 3 1576 1  0    0    0 1}
+TRIG65   {1519 3 1079 2  0    0    0 1}
+TRIG95   {3122 3 3100 4  0    0    0 1}
+TRIG98   {3103 3 3121 4  0    0    0 1}
+TRIG99   {3104 3 3121 4  0    0    0 1}
+TRIG100  {3107 3 3121 4  0    0    0 1}
+TRIG101  {3108 3 3121 4  0    0    0 1}
+TRIG102  {3111 3 3121 4  0    0    0 1}
+TRIG103  {3112 3 3121 4  0    0    0 1}
+TRIG104  {3115 3 3121 4  0    0    0 1}
+TRIG105  {3116 3 3123 4  0    0    0 1}
+TRIG106  {3119 3 3121 4  0    0    0 1}
+TRIG107  {3120 3 3121 4  0    0    0 1}
+TRIG108  {3122 3 3100 4  0    0    0 1}
+TRIG109  {3128 3 3121 4  0    0    0 1}
+TRIG110  {3134 3 3121 4  0    0    0 1}
+TRIG111  {3144 3 3121 4  0    0    0 1}
+TRIG112  {3150 3 3121 4  0    0    0 1}
+TRIG113  {3158 3 3121 4  0    0    0 1}
+TRIG114  {3166 3 3121 4  0    0    0 1}
+TRIG115  {3176 3 3121 4  0    0    0 1}
+TRIG116  {3184 3 3121 4  0    0    0 1}
+TRIG117  {3192 3 3121 4  0    0    0 1}
+TRIG118  {3126 3 3131 4  0    0    0 0}
+TRIG119  {3136 3 3139 4  0    0    0 0}
+TRIG120  {3152 3 3155 4  0    0    0 1}
+TRIG121  {3160 3 3163 4  0    0    0 1}
+TRIG122  {3168 3 3171 4  0    0    0 1}
+TRIG123  {3174 3 3179 4  0    0    0 0}
+TRIG124  {3182 3 3187 4  0    0    0 1}
+TRIG125  {3190 3 3195 4  0    0    0 0}
+TRIG126  {3198 3 3098 4  0    0    0 1}
+TRIG146  {3207 3 3256 4  0    0    0 1}
+TRIG147  {3213 3 3283 4  0    0    0 1}
+TRIG148  {3233 3 3209 4  0    0    0 1}
+TRIG149  {3239 3 3277 4  0    0    0 1}
+TRIG150  {3258 3 3237 4  0    0    0 1}
+TRIG151  {3264 3 3231 4  0    0    0 1}
+TRIG152  {3279 3 3262 4  0    0    0 1}
+TRIG153  {3285 3 3215 4  0    0    0 1}
+TRIG154  {3223 3 3121 4  0    0    0 1}
+TRIG155  {3247 3 3121 4  0    0    0 1}
+TRIG156  {3142 3 3147 4  0    0    0 0}
+TRIG157  {3126 3 3121 4  0    0    0 1}
+TRIG158  {3136 3 3121 4  0    0    0 1}
+TRIG159  {3142 3 3121 4  0    0    0 1}
+TRIG160  {3152 3 3121 4  0    0    0 0}
+TRIG161  {3160 3 3121 4  0    0    0 0}
+TRIG162  {3168 3 3121 4  0    0    0 0}
+TRIG163  {3174 3 3121 4  0    0    0 1}
+TRIG164  {3182 3 3121 4  0    0    0 0}
+TRIG165  {3190 3 3121 4  0    0    0 1}
+TRIG203  {3313 3 3349 4  0    0    0 1}
+TRIG204  {3307 3 3371 4  0    0    0 1}
+TRIG205  {3404 3 3369 4  0    0    0 1}
+TRIG206  {3317 3 3351 4  0    0    0 1}
+TRIG207  {3412 3 3121 4  0    0    0 1}
+TRIG208  {3414 3 3121 4  0    0    0 1}
+TRIG209  {3305 3 3375 4  0    0    0 1}
+TRIG210  {3311 3 3345 4  0    0    0 1}
+TRIG211  {3323 3 3339 4  0    0    0 1}
+TRIG212  {3397 3 3381 4  0    0    0 1}
+TRIG213  {3391 3 3331 4  0    0    0 1}
+TRIG214  {3389 3 3333 4  0    0    0 1}
+TRIG215  {3295 3 3361 4  0    0    0 1}
+TRIG216  {3297 3 3363 4  0    0    0 1}
+
+TRIG43   {1192 4 2    12 1192 841  0 1}
+TRIG44   {1213 4 1    9  1218 811  0 1}
+TRIG46   {1231 4 3    15 1232 1    0 1}
+TRIG47   {1232 4 3    15 1236 1    0 1}
+TRIG48   {1243 4 4    12 1222 907  0 1}
+TRIG49   {1266 4 1    9  1281 795  0 1}
+TRIG51   {1284 4 5    12 1284 861  0 1}
+TRIG53   {1316 4 1    9  1297 829  0 1}
+TRIG55   {1344 4 1    9  1327 827  0 1}
+TRIG57   {1364 4 1    9  1366 803  0 1}
+TRIG61   {1403 4 1    14 1452 801  0 1}
+TRIG62   {1440 4 1    14 1456 801  0 1}
+TRIG64   {1463 4 6    12 1463 933  0 1}
+TRIG66   {1483 4 1    14 1505 1515 0 1}
+TRIG67   {1534 4 1    14 1473 1519 0 1}
+TRIG68   {1731 4 1    14 1701 1523 0 1}
+TRIG69   {1808 4 3    17 1564 1663 0 1}
+TRIG70   {1912 4 3    17 1764 1863 0 1}
+TRIG71   {1576 4 8    11 1576 1537 0 1}
+TRIG72   {1576 4 9    16 2101 1    0 0}
+TRIG81   {2178 4 10   18 2178 1579 0 1}
+TRIG82   {2178 4 1    12 2204 1545 0 0}
+TRIG83   {2199 4 10   18 2199 1579 0 1}
+TRIG84   {2199 4 1    12 2208 1545 0 0}
+TRIG85   {2182 4 10   18 2182 1577 0 1}
+TRIG86   {2182 4 1    12 2214 1559 0 0}
+TRIG87   {2201 4 10   18 2201 1581 0 1}
+TRIG88   {2201 4 1    12 2219 1555 0 0}
+TRIG89   {2187 4 10   18 2187 1579 0 1}
+TRIG90   {2187 4 1    12 2225 1543 0 0}
+TRIG91   {2193 4 10   18 2193 1579 0 1}
+TRIG92   {2193 4 1    12 2191 1571 0 0}
+TRIG93   {2192 4 10   18 2192 1577 0 1}
+TRIG94   {2192 4 1    12 2271 1507 0 0}
+TRIG127  {3098 4 11   14 3098 1727 0 1}
+TRIG166  {3123 4 1    11 3126 1731 0 1}
+TRIG167  {3131 4 1    11 3136 1727 0 1}
+TRIG168  {3139 4 1    11 3142 1731 0 1}
+TRIG169  {3147 4 1    11 3152 1727 0 1}
+TRIG170  {3155 4 1    11 3160 1727 0 1}
+TRIG171  {3163 4 1    11 3168 1727 0 1}
+TRIG172  {3171 4 1    11 3174 1731 0 1}
+TRIG173  {3179 4 1    11 3182 1731 0 1}
+TRIG174  {3187 4 1    11 3190 1731 0 1}
+TRIG251  {3100 4 12   17 3123 3194 0 1}
+TRIG253  {3734 4 13   12 3725 1857 0 1}
+TRIG254  {3813 4 13   12 3815 1865 0 1}
+TRIG256  {3821 4 14   12 3829 1843 0 1}
+TRIG261  {3896 4 15   14 3881 1787 0 1}
+TRIG262  {3899 4 15   14 3890 1787 0 1}
+TRIG263  {3904 4 15   14 3863 1787 0 1}
+TRIG264  {3907 4 15   14 3854 1787 0 1}
+TRIG265  {3897 4 16   14 3897 1889 0 1}
+TRIG266  {3898 4 16   14 3898 1889 0 1}
+TRIG267  {3905 4 16   14 3905 1889 0 1}
+TRIG268  {3906 4 16   14 3906 1889 0 1}

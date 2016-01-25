@@ -1,0 +1,141 @@
+<project name="AreaBuilder" basedir="." default="main">
+
+   <property name="version.num"   value="1.00"/>
+   <property name="build.number"  value="1"/>
+   <property name="cfg.dir"       value="config"/>
+   <property name="lib.dir"       value="lib"/>
+   <property name="src.dir"       value="src"/>
+   <property name="build.dir"     value="build"/>	
+   <property name="data.dir"      value="data"/>
+   <property name="dist.dir"      value="${build.dir}/dist"/>  
+   <property name="src.dist.dir"  value="${build.dir}/dist-src"/> 	
+   <property name="classes.dir"   value="${build.dir}/classes"/>
+   <property name="jar.dir"       value="${build.dir}/jar"/>
+   <property name="main-class"    value="org.tdod.ether.areabuilder.AreaBuilder"/>
+
+   <path id="project.classpath">
+      <pathelement location="${lib.dir}/commons-logging.jar"/>
+      <pathelement location="${lib.dir}/ether.jar"/>
+      <pathelement location="${lib.dir}/xstream-1.3.1.jar"/>   	
+   </path>
+
+   <path id="classpath">
+	   <fileset dir="${lib.dir}" includes="**/*.jar"/>
+   </path>
+
+   <target name="clean">
+       <delete dir="${build.dir}"/>
+   </target>
+
+   <target name="run" depends="jar">
+       <java fork="true" classname="${main-class}">
+           <classpath>
+               <path refid="classpath"/>
+               <path location="${jar.dir}/${ant.project.name}.jar"/>
+           </classpath>
+         <jvmarg value="-DTaConfigFile=config/ta.properties"/>
+       </java>
+   </target>
+
+   <target name="compile">
+       <mkdir dir="${classes.dir}"/>
+       <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+   </target>
+
+   <target name="jar" depends="compile">
+       <pathconvert property="mf.classpath" pathsep=" " refid="project.classpath">
+         <map from="${basedir}/" to=""/>
+       </pathconvert>
+
+       <mkdir dir="${jar.dir}"/>
+       <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+           <manifest>
+               <attribute name="Main-Class" value="${main-class}"/>
+               <attribute name="Class-Path" value="${mf.classpath}"/>
+           </manifest>
+           <fileset dir="${cfg.dir}" includes="telnetd.properties"/>
+           <fileset dir="${cfg.dir}" includes="log4j.properties"/>
+       </jar>
+      
+       <copy file="${jar.dir}/${ant.project.name}.jar" todir="${basedir}/"/>
+   </target>
+
+   <target name="clean-build" depends="clean,jar"/>
+	
+   <target name="main" depends="clean,run"/>
+	
+   <target name="dist" depends="jar">
+      <mkdir dir="${dist.dir}"/>
+      <copy file="${jar.dir}/${ant.project.name}.jar" todir="${dist.dir}/"/>
+      <copy file="run.sh" todir="${dist.dir}/"/>
+      <copy file="run.bat" todir="${dist.dir}/"/>
+      <copy file="README.txt" todir="${dist.dir}/"/>
+
+      <mkdir dir="${dist.dir}/${lib.dir}"/>     
+      <copy todir="${dist.dir}/${lib.dir}">
+         <fileset dir="${lib.dir}"/>
+         <globmapper from="*" to="*"/>
+      </copy>     
+
+      <mkdir dir="${dist.dir}/${cfg.dir}"/>     
+      <copy todir="${dist.dir}/${cfg.dir}">
+         <fileset dir="${cfg.dir}"/>
+         <globmapper from="*" to="*"/>
+      </copy>     
+
+      <mkdir dir="${dist.dir}/${data.dir}"/>
+      <mkdir dir="${dist.dir}/${build.dir}"/>
+   	
+      <zip destfile="${build.dir}/AreaBuilder${version.num}b${build.number}.zip">
+          <zipfileset dir="${dist.dir}" prefix="AreaBuilder"/>
+      </zip>   	
+   </target>
+
+   <target name="dist-complete" depends="dist">
+      <copy todir="${dist.dir}/${data.dir}">
+         <fileset dir="${data.dir}"/>
+         <globmapper from="*" to="*"/>
+      </copy>
+      <zip destfile="${build.dir}/AreaBuilder_complete${version.num}b${build.number}.zip">
+          <zipfileset dir="${dist.dir}" prefix="AreaBuilder"/>
+      </zip>         	
+   </target>
+
+   <target name="dist-src">
+      <mkdir dir="${src.dist.dir}"/>
+
+      <copy todir="${src.dist.dir}/${src.dir}">
+         <fileset dir="${src.dir}"/>
+         <globmapper from="*" to="*"/>
+      </copy>
+   	
+      <copy file=".checkstyle" todir="${src.dist.dir}/"/>
+      <copy file=".classpath" todir="${src.dist.dir}/"/>
+      <copy file=".project" todir="${src.dist.dir}/"/>
+      <copy file="build.xml" todir="${src.dist.dir}/"/>
+      <copy file="README.txt" todir="${src.dist.dir}/"/>
+      <copy file="run.bat" todir="${src.dist.dir}/"/>
+      <copy file="run.sh" todir="${src.dist.dir}/"/>
+
+      <mkdir dir="${src.dist.dir}/${cfg.dir}/"/>
+      <copy todir="${src.dist.dir}/${cfg.dir}/">
+         <fileset dir="${cfg.dir}"/>
+         <globmapper from="*" to="*"/>
+      </copy>     
+
+      <mkdir dir="${src.dist.dir}/${data.dir}/"/>
+
+      <mkdir dir="${src.dist.dir}/${lib.dir}/"/>
+      <copy todir="${src.dist.dir}/${lib.dir}/">
+         <fileset dir="${lib.dir}"/>
+         <globmapper from="*" to="*"/>
+      </copy>     
+
+      <zip destfile="${build.dir}/AreaBuilder_src${version.num}bxx.zip">
+          <zipfileset dir="${src.dist.dir}" prefix="AreaBuilder"/>
+      </zip>
+
+   </target>
+
+	
+</project>
